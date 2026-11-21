@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil · Sistem Informasi KP FTI UNTAR</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Montserrat:wght@500;600&family=Poppins:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/profile.js" defer></script>
+</head>
+<body data-shell="app">
+  <main class="main plain">
+    <h1 class="page-title">Personal Information</h1>
+    <form class="panel" id="profile-form" novalidate>
+      <div class="form-grid">
+        <div class="stack">
+          <div class="field">
+            <label class="label" for="nim">Username</label>
+            <input class="input" id="nim" name="nim" readonly>
+          </div>
+          <div class="field">
+            <label class="label" for="nama">Name</label>
+            <input class="input" id="nama" name="nama" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label class="label" for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" placeholder="Masukkan email aktif" autocomplete="email">
+          </div>
+        </div>
+        <div class="stack">
+          <div class="field">
+            <label class="label" for="old-password">Password Lama</label>
+            <div class="input-wrap">
+              <input class="input" id="old-password" name="oldPassword" type="password" placeholder="Masukkan password lama" autocomplete="current-password">
+              <button class="toggle-pass" type="button"></button>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="new-password">Password Baru</label>
+            <div class="input-wrap">
+              <input class="input" id="new-password" name="newPassword" type="password" placeholder="Ketik ulang password baru" minlength="6" autocomplete="new-password">
+              <button class="toggle-pass" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="divider">
+      <div class="actions">
+        <button class="btn" type="submit">Save Changes</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

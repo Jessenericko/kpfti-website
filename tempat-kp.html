@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tempat KP · Sistem Informasi KP FTI UNTAR</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Montserrat:wght@500;600&family=Poppins:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/tempat-kp.js" defer></script>
+</head>
+<body data-shell="app-nav">
+  <main class="main">
+    <h1 class="page-title">Tempat KP</h1>
+
+    <div class="tabs" role="tablist" aria-label="Tempat KP">
+      <button class="tab" type="button" role="tab" id="tab-history" aria-controls="history">History</button>
+      <button class="tab" type="button" role="tab" id="tab-lowongan" aria-controls="lowongan">Lowongan</button>
+    </div>
+
+    <section class="tab-panel panel" id="history" role="tabpanel" aria-labelledby="tab-history">
+      <p class="intro">Berikut adalah daftar perusahaan yang pernah menjadi pilihan tempat pelaksanaan kerja praktik serta perusahaan yang sedang membuka kesempatan kerja praktik bagi mahasiswa.</p>
+      <div class="list-head">
+        <h2>Daftar Perusahaan</h2>
+        <label class="search">
+          <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+          <span class="sr-only">Cari perusahaan</span>
+          <input type="search" id="company-search" placeholder="Search">
+        </label>
+      </div>
+      <table class="table">
+        <thead><tr><th>No</th><th>Nama</th><th>Alamat</th><th>Kontak</th></tr></thead>
+        <tbody id="company-rows"></tbody>
+      </table>
+      <div class="empty" id="company-empty" hidden>Perusahaan tidak ditemukan</div>
+      <div class="pager">
+        <span id="pager-info" aria-live="polite"></span>
+        <div class="pager-btns" id="pager-btns"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel panel" id="lowongan" role="tabpanel" aria-labelledby="tab-lowongan" hidden>
+      <p class="intro">Berikut adalah daftar lowongan untuk melaksanakan kerja praktek</p>
+      <div class="list-head">
+        <h2>Daftar Lowongan</h2>
+        <label class="search">
+          <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+          <span class="sr-only">Cari lowongan</span>
+          <input type="search" id="vacancy-search" placeholder="Search">
+        </label>
+      </div>
+      <table class="table">
+        <thead><tr><th>No</th><th>Tempat</th><th>Bidang Kerja</th><th>Alamat/Kontak</th></tr></thead>
+        <tbody id="vacancy-rows"></tbody>
+      </table>
+      <div class="empty" id="vacancy-empty">
+        <span class="empty-art"><svg class="icon" aria-hidden="true"><use href="#i-folder"></use></svg></span>
+        Tidak ada lowongan kerja praktek
+      </div>
+    </section>
+  </main>
+</body>
+</html>

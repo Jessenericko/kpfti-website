@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data KP · Sistem Informasi KP FTI UNTAR</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&family=Montserrat:wght@500;600&family=Poppins:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/data-kp.js" defer></script>
+</head>
+<body data-shell="app-nav">
+  <main class="main">
+    <h1 class="page-title">Data KP</h1>
+
+    <div class="tabs" role="tablist" aria-label="Data KP">
+      <button class="tab" type="button" role="tab" id="tab-daftar" aria-controls="daftar">Pendaftaran KP</button>
+      <button class="tab" type="button" role="tab" id="tab-laporan" aria-controls="laporan">Laporan Akhir &amp; Abstrak</button>
+      <button class="tab" type="button" role="tab" id="tab-program" aria-controls="program">Program KP</button>
+    </div>
+
+    <!-- Pendaftaran KP -->
+    <div class="tab-panel" id="daftar" role="tabpanel" aria-labelledby="tab-daftar">
+      <form class="panel stack" id="kp-form" novalidate>
+        <div>
+          <h2>Petunjuk Pengisian Data Kerja Praktik (KP)</h2>
+          <ul>
+            <li>Isilah data Kerja Praktik (KP) kelompok Anda dengan benar dan lengkap.</li>
+            <li>Pada kolom Tempat KP, sistem akan menampilkan daftar perusahaan yang pernah didaftarkan.</li>
+            <li>Pilih salah satu perusahaan dari daftar tersebut untuk mengisi alamat dan informasi kontak perusahaan secara otomatis, apabila data perusahaan sudah tersedia di sistem.</li>
+          </ul>
+        </div>
+        <h2 class="kp-semester">KP SEMESTER GENAP 2025/2026 JURUSAN <span data-user="jurusan"></span></h2>
+        <div class="field">
+          <label class="label" for="judul">Judul KP</label>
+          <input class="input" id="judul" name="judul" placeholder="Masukkan judul KP" required>
+        </div>
+        <div class="field">
+          <label class="label" for="tempat">Tempat/Perusahaan KP</label>
+          <input class="input" id="tempat" name="tempat" list="company-list" placeholder="masukkan tempat/perusahaan" autocomplete="off" required>
+          <datalist id="company-list"></datalist>
+          <p class="hint">Input tempat/perusahaan terlebih dahulu dan klik salah satu pilihan yang muncul.<br>Jika ada perbedaan data alamat/kontak dengan yang sudah tersimpan, silahkan tambahkan informasi pada nama perusahaan</p>
+        </div>
+        <div class="field">
+          <label class="label" for="alamat">Alamat KP</label>
+          <input class="input" id="alamat" name="alamat" placeholder="Masukkan alamat KP" required>
+        </div>
+        <div class="field">
+          <label class="label" for="kontak">Kontak KP</label>
+          <input class="input" id="kontak" name="kontak" placeholder="Masukkan kontak KP" required>
+        </div>
+        <div class="actions">
+          <button class="btn" type="submit">Register</button>
+        </div>
+      </form>
+
+      <form class="panel stack" id="dokumen-form" novalidate>
+        <div>
+          <h2>Ketentuan Unggah File</h2>
+          <ul>
+            <li>File yang dapat diunggah harus berformat gambar (image), PDF, atau arsip terkompresi (ZIP, 7Z, atau TAR).</li>
+            <li>File sinopsis dan laporan sebelum sidang wajib berformat PDF.</li>
+            <li>Ukuran maksimum total file yang diunggah adalah kurang dari 20 MB.</li>
+            <li>Jika total ukuran file melebihi batas tersebut, silakan unggah file satu per satu.</li>
+          </ul>
+        </div>
+        <div class="field">
+          <span class="label-lg" id="lbl-khs">KHS Terakhir Milik <span data-user="nama"></span></span>
+          <div class="file" data-key="khs" data-ext="pdf" data-max-mb="20">
+            <input type="file" accept=".pdf,application/pdf" aria-labelledby="lbl-khs">
+            <svg class="icon solid file-doc" aria-hidden="true"><use href="#i-file"></use></svg>
+            <button class="file-btn" type="button">Pilih File</button>
+            <div class="file-info"><strong>Tidak ada file terpilih</strong><span>Maks size file 20 MB. Format file PDF.</span></div>
+            <button class="file-del" type="button" aria-label="Hapus file"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label-lg" id="lbl-surat">Surat Keterangan KP (dari FTI) untuk Perusahaan</span>
+          <div class="file" data-key="surat" data-ext="pdf" data-max-mb="20">
+            <input type="file" accept=".pdf,application/pdf" aria-labelledby="lbl-surat">
+            <svg class="icon solid file-doc" aria-hidden="true"><use href="#i-file"></use></svg>
+            <button class="file-btn" type="button">Pilih File</button>
+            <div class="file-info"><strong>Tidak ada file terpilih</strong><span>Maks size file 20 MB. Format file PDF.</span></div>
+            <button class="file-del" type="button" aria-label="Hapus file"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label-lg" id="lbl-penilaian">Lembar Penilaian Mahasiswa KP dari Perusahaan</span>
+          <div class="file" data-key="penilaian" data-ext="pdf" data-max-mb="20">
+            <input type="file" accept=".pdf,application/pdf" aria-labelledby="lbl-penilaian">
+            <svg class="icon solid file-doc" aria-hidden="true"><use href="#i-file"></use></svg>
+            <button class="file-btn" type="button">Pilih File</button>
+            <div class="file-info"><strong>Tidak ada file terpilih</strong><span>Maks size file 20 MB. Format file PDF.</span></div>
+            <button class="file-del" type="button" aria-label="Hapus file"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label-lg" id="lbl-persetujuan">Laporan Persetujuan Mengikuti Sidang KP</span>
+          <div class="file" data-key="persetujuan" data-ext="pdf" data-max-mb="20">
+            <input type="file" accept=".pdf,application/pdf" aria-labelledby="lbl-persetujuan">
+            <svg class="icon solid file-doc" aria-hidden="true"><use href="#i-file"></use></svg>
+            <button class="file-btn" type="button">Pilih File</button>
+            <div class="file-info"><strong>Tidak ada file terpilih</strong><span>Maks size file 20 MB. Format file PDF.</span></div>
+            <button class="file-del" type="button" aria-label="Hapus file"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label-lg" id="lbl-selesai">Keterangan Selesai KP dari Perusahaan</span>
+          <div class="file" data-key="selesai" data-ext="pdf" data-max-mb="20">
+            <input type="file" accept=".pdf,application/pdf" aria-labelledby="lbl-selesai">
+            <svg class="icon solid file-doc" aria-hidden="true"><use href="#i-file"></use></svg>
+            <button class="file-btn" type="button">Pilih File</button>
+            <div class="file-info"><strong>Tidak ada file terpilih</strong><span>Maks size file 20 MB. Format file PDF.</span></div>
+            <button class="file-del" type="button" aria-label="Hapus file"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="label-lg" id="lbl-pengesahan">Lembar Pengesahan Laporan KP</span>
+          <div class="file" data-key="pengesahan" data-ext="pdf" data-max-mb="20">
+            <input type="file" accept=".pdf,application/pdf" aria-labelledby="lbl-pengesahan">
+            <svg class="icon solid file-doc" aria-hidden="true"><use href="#i-file"></use></svg>
+            <button class="file-btn" type="button">Pilih File</button>
+            <div class="file-info"><strong>Tidak ada file terpilih</strong><span>Maks size file 20 MB. Format file PDF.</span></div>
+            <button class="file-del" type="button" aria-label="Hapus file"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn" type="submit">Upload</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Laporan Akhir & Abstrak -->
+    <div class="tab-panel" id="laporan" role="tabpanel" aria-labelledby="tab-laporan" hidden>
+      <form class="panel stack" id="laporan-form" novalidate>
+        <div class="info-box">
+          <section>
+            <h2>Upload Laporan Akhir &amp; Input abstrak KP Anda</h2>
+            <ul>
+              <li>Saat mengunggah laporan akhir, pastikan mencantumkan jumlah halaman dan jumlah lampiran dengan benar.</li>
+              <li>Gulir ke bagian bawah halaman untuk mengisi Abstrak.</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Jika Upload Gagal, Coba Cara Berikut:</h2>
+            <ol>
+              <li>Buka file PDF dengan aplikasi pembaca PDF atau browser.</li>
+              <li>Pilih menu Print.</li>
+              <li>Pilih printer dengan nama PDF.</li>
+              <li>Upload dengan file yang baru (yang muncul setelah di print).</li>
+            </ol>
+          </section>
+        </div>
+        <div class="field">
+          <span class="label-lg" id="lbl-laporan">Laporan Akhir KP</span>
+          <div class="file" data-key="laporan" data-ext="pdf" data-max-mb="20">
+            <input type="file" accept=".pdf,application/pdf" aria-labelledby="lbl-laporan">
+            <svg class="icon solid file-doc" aria-hidden="true"><use href="#i-file"></use></svg>
+            <button class="file-btn" type="button">Pilih File</button>
+            <div class="file-info"><strong>Tidak ada file terpilih</strong><span>Maks size file 20 MB. Format file PDF.</span></div>
+            <button class="file-del" type="button" aria-label="Hapus file"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+          </div>
+        </div>
+        <fieldset class="field">
+          <legend class="label">Deskripsi Fisik Laporan KP</legend>
+          <div class="form-grid">
+            <input class="input" name="halaman" type="number" min="1" inputmode="numeric" placeholder="Jumlah halaman" aria-label="Jumlah halaman" required>
+            <input class="input" name="lampiran" type="number" min="0" inputmode="numeric" placeholder="Jumlah lampiran" aria-label="Jumlah lampiran" required>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label class="label" for="laporan-password">Password</label>
+          <input class="input" id="laporan-password" name="password" readonly>
+          <p class="hint strong">Laporan akhir yang diunggah akan dilindungi dengan kata sandi acak yang dibuat otomatis oleh sistem.</p>
+        </div>
+        <div class="actions">
+          <button class="btn" type="submit">Upload</button>
+        </div>
+      </form>
+
+      <form class="panel stack" id="abstrak-form" novalidate>
+        <div class="field">
+          <label class="label" for="abstrak">Input Abstrak KP (100-200 kata)</label>
+          <div class="input-wrap">
+            <textarea class="input" id="abstrak" name="abstrak" placeholder="Masukkan Abstrak KP"></textarea>
+            <span class="counter" id="abstrak-count" aria-live="polite">0/200</span>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-outline-danger" type="reset">Clear</button>
+          <button class="btn" type="submit">Upload</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Program KP -->
+    <div class="tab-panel" id="program" role="tabpanel" aria-labelledby="tab-program" hidden>
+      <form class="panel stack" id="program-form" novalidate>
+        <div class="field">
+          <span class="label-lg" id="lbl-program">File Program KP</span>
+          <div class="file" data-key="program" data-ext="zip" data-max-mb="1024">
+            <input type="file" accept=".zip,application/zip" aria-labelledby="lbl-program">
+            <svg class="icon solid file-doc" aria-hidden="true"><use href="#i-file"></use></svg>
+            <button class="file-btn" type="button">Pilih File</button>
+            <div class="file-info"><strong>Tidak ada file terpilih</strong><span>Maks size file 1 GB. Format file ZIP.</span></div>
+            <button class="file-del" type="button" aria-label="Hapus file"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></button>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn" type="submit">Upload</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
